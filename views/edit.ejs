@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>TP Crud</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <% if (alumno) { %>
+    <div class="constainer mt-4">
+        <div class=" card border-secondary">
+            <div class="card-header">Editar</div>
+            <div class="card-body">
+                <form action="/update" method="POST">
+                    <input id="id" name="id" value="<% alumno.id %>" hidden>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="<% alumno.nombre %>" tabindex="1">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" value="<% alumno.apellido %>" tabindex="1">
+                        <label for="mail" class="form-label">Mail</label>
+                        <input type="text" class="form-control" id="mail" name="mail" value="<% alumno.mail %>" tabindex="1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mail" class="form-label">Cursos</label>
+                        <select id="cursos" name="cursos" class="form-select" tabindex="2">
+                            <option <%= alumno.cursos=='k200' ? "selected": '' %> value="k200" selected>k200</option>
+                            <option <%= alumno.cursos=='k201' ? "selected": '' %> value="k201" selected>k201</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                    <a href="/" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</body>
+</html>
